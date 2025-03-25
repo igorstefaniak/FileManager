@@ -1,4 +1,4 @@
 
 ---
 
-# File Manager - Java
+# Polaris (File Manager) - Java
