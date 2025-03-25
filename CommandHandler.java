@@ -10,19 +10,19 @@ public class CommandHandler {
     }
 
     public void processCommands() {
-        Scanner scanner = new Scanner(System.in);
-        String command;
-
-        System.out.println("Nawigator plików: użyj /? lub /h aby wyświetlić pomoc.");
-        while (true) {
-            System.out.print(fileOperations.getCurrentDirectory().getAbsolutePath() + "> --> " );
-            command = scanner.nextLine().trim();
-            if (command.equalsIgnoreCase("/q") || command.equalsIgnoreCase("/exit") || command.equalsIgnoreCase("/quit")) {
-                break;
+        try (Scanner scanner = new Scanner(System.in)) {
+            String command;
+            
+            System.out.println("Nawigator plików: użyj /? lub /h aby wyświetlić pomoc.");
+            while (true) {
+                System.out.print("PLR " + fileOperations.getCurrentDirectory().getAbsolutePath() + "> " ); //➜
+                command = scanner.nextLine().trim();
+                if (command.equalsIgnoreCase("/q") || command.equalsIgnoreCase("/exit") || command.equalsIgnoreCase("/quit")) {
+                    break;
+                }
+                processCommand(command);
             }
-            processCommand(command);
         }
-        scanner.close();
     }
     private void processCommand(String command) {
         //TODO przetwarzanie komend
